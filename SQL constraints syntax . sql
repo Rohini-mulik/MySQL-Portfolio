@@ -1,0 +1,47 @@
+create database amazon_orders;
+use amazon_orders;
+create table orders(
+order_id int,
+product_name varchar(30),
+quantity int,
+price int
+);
+describe orders;
+
+show tables;
+
+use college;
+create table students_detail(
+roll_no int  primary key,
+name varchar(30) not null,
+email varchar(30) unique,
+age int check(age<=18),
+city varchar(30) default "mumbai"
+);
+alter table students_detail rename column name to full_name ;
+
+describe students_detail;
+create table marks(
+marks_id int primary key,
+roll_no int,
+subject varchar(30)not null,
+marks int,
+foreign key (roll_no) references  students_detail(roll_no));
+
+describe marks;
+-- single coloum and multiple coloum 
+alter table students_detail add phoneno int ;
+use amazon_orders;
+alter table orders add(discount varchar (30),total_price int); 
+describe orders;
+use college;
+alter table students_detail rename column name to full_name ;
+describe students_detail;
+rename table marks to students_mark;
+show tables;
+drop  table students_marks;
+drop table student_details;
+drop database college ;
+use amazon_orders ;
+alter table orders modify product_name int ;
+describe orders;
